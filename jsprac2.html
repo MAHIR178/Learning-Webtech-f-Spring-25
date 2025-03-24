@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Email</td>
+        </tr>
+        <tr>
+            <td><input type="text"id="email" value=""></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"onclick='test()'></td>
+        </tr>
+    </table>
+    <p id="error" style="color: red;"></p>
+    <div id="body"></div>
+
+    <script>
+    function test() {
+        let email = document.getElementById('email').value.trim();
+        let error = document.getElementById('error');
+        let body = document.getElementById('body');
+
+        if (email === "") {
+            error.innerHTML = "Email cannot be empty.";
+           
+            return;
+        }
+
+        let atPos = email.indexOf("@");
+        let dotPos = email.lastIndexOf(".");
+        
+        
+        if (atPos < 1 || dotPos < atPos + 2 || dotPos + 2 >= email.length) {
+            error.innerHTML = "Invalid email format. Please enter a valid email (e.g., anything@example.com).";
+           
+            return;
+        }
+
+        
+        if (email.includes(" ")) {
+            error.innerHTML = "Email cannot contain spaces.";
+            body.innerHTML = "";
+            return;
+        }
+
+        error.innerHTML = "";
+        body.innerHTML = "Sucessfull";
+    }
+    </script>
+
+</body>
+</html>

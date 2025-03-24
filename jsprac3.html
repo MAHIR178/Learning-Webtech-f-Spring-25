@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Gender</legend>
+        <table>
+            <tr>
+                <td><input type="radio" name="Gender" id="Male" value="Male">
+                    <label for="Male">Male</label></td>
+                <td><input type="radio" name="Gender" id="Female" value="Female">
+                    <label for="Female">Female</label></td>
+                <td><input type="radio" name="Gender" id="Other" value="Other">
+                    <label for="Other">Other</label></td>
+            </tr>
+        </table>
+    </fieldset>
+    
+    <button onclick="validateGender()">Submit</button>
+    <p id="error" style="color: red;"></p>
+
+    <script>
+        function validateGender() {
+            let error = document.getElementById("error");
+            let genderSelected = document.querySelector('input[name="Gender"]:checked');
+
+            if (!genderSelected) {
+                error.innerHTML = "Please select a gender.";
+                return;
+            }
+
+            error.innerHTML = "";  
+            alert("Gender selected: " + genderSelected.value);
+        }
+    </script>
+</body>
+</html>
